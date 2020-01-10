@@ -137,7 +137,8 @@ https://github.com/adnan-kamili/swagger-sample-template
     Content-Type: application/json
  
     {
-      "message": "Any message which should help the user to resolve the conflict"
+      "message": "Any message which should help the user to resolve the conflict",
+      "cause": "Exceeded 20 request limit in 1 minute" /*optional, for response in internal services*/
     }
 ```
 6- VERB Too Many Requests - HTTP Response Code: **429**
@@ -155,7 +156,8 @@ https://github.com/adnan-kamili/swagger-sample-template
     Content-Type: application/json
  
     {
-      "message": "Something is broken"
+      "message": "Something is broken",
+      "cause": "Deadlock found when trying to get lock" /*optional, for response in internal services*/
     }
 ```
 8- VERB Service Unavailable - HTTP Response Code: **503**
