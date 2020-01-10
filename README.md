@@ -89,7 +89,7 @@ https://github.com/adnan-kamili/swagger-sample-template
 
 ## Rest API Error Responses
 
-1- GET - HTTP Response Code: **404**
+1- HTTP Response Code: **404**
 
 ```javascript
     HTTP/1.1  404
@@ -99,61 +99,21 @@ https://github.com/adnan-kamili/swagger-sample-template
       "message": "The item does not exist"
     }
 ```
-2- DELETE - HTTP Response Code: **404**
-```javascript
-    HTTP/1.1  404
-    Content-Type: application/json
- 
-    {
-      "message": "The item does not exist"
-    }
-```
-3- POST -  HTTP Response Code: **400**
+2- HTTP Response Code: **400**
 ```javascript
     HTTP/1.1  400
     Content-Type: application/json
     
     {
         "message": "Validation errors in your request", /* skip or optional error message */
-        "errors": [
-            {
-                "message": "Oops! The value is invalid",
-                "code": 34,
-                "field": "email"
-            },
-            {
-                "message": "Oops! The format is not correct",
-                "code": 35,
-                "field": "phoneNumber"
+        "errors": {
+                "email":"Email is invalid",
+                "phoneNumber":"PhoneNumber is required"
             }
-        ]
     }
 ```
-4- PATCH -  HTTP Response Code: **400/404**
-```javascript
-    HTTP/1.1  400
-    Content-Type: application/json
-    
-    {
-        "message": "Validation errors in your request", /* skip or optional error message */
-        "errors": [
-            {
-                "message": "Oops! The format is not correct",
-                "code": 35,
-                "field": "phoneNumber"
-            }
-        ]
-    }
-    
-    
-    HTTP/1.1  404
-    Content-Type: application/json
- 
-    {
-      "message": "The item does not exist"
-    }
-```
-5- VERB Unauthorized - HTTP Response Code: **401**
+
+3- VERB Unauthorized - HTTP Response Code: **401**
 ```javascript
     HTTP/1.1  401
     Content-Type: application/json
@@ -162,7 +122,7 @@ https://github.com/adnan-kamili/swagger-sample-template
       "message": "Authentication credentials were missing or incorrect"
     }
 ```
-6- VERB Forbidden - HTTP Response Code: **403**
+4- VERB Forbidden - HTTP Response Code: **403**
 ```javascript
     HTTP/1.1  403
     Content-Type: application/json
@@ -171,7 +131,7 @@ https://github.com/adnan-kamili/swagger-sample-template
       "message": "The request is understood, but it has been refused or access is not allowed"
     }
 ```
-7- VERB Conflict - HTTP Response Code: **409**
+5- VERB Conflict - HTTP Response Code: **409**
 ```javascript
     HTTP/1.1  409
     Content-Type: application/json
@@ -180,7 +140,7 @@ https://github.com/adnan-kamili/swagger-sample-template
       "message": "Any message which should help the user to resolve the conflict"
     }
 ```
-8- VERB Too Many Requests - HTTP Response Code: **429**
+6- VERB Too Many Requests - HTTP Response Code: **429**
 ```javascript
     HTTP/1.1  429
     Content-Type: application/json
@@ -189,7 +149,7 @@ https://github.com/adnan-kamili/swagger-sample-template
       "message": "The request cannot be served due to the rate limit having been exhausted for the resource"
     }
 ```
-9- VERB Internal Server Error - HTTP Response Code: **500**
+7- VERB Internal Server Error - HTTP Response Code: **500**
 ```javascript
     HTTP/1.1  500
     Content-Type: application/json
@@ -198,7 +158,7 @@ https://github.com/adnan-kamili/swagger-sample-template
       "message": "Something is broken"
     }
 ```
-10- VERB Service Unavailable - HTTP Response Code: **503**
+8- VERB Service Unavailable - HTTP Response Code: **503**
 ```javascript
     HTTP/1.1  503
     Content-Type: application/json
@@ -218,34 +178,8 @@ Validation error formats can be different depending on your requirements. Follow
     {
         "message": "Validation errors in your request", /* skip or optional error message */
         "errors": {
-            "email": [
-                  "Oops! The email is invalid"
-                ],
-            "phoneNumber": [
-                  "Oops! The phone number format is not correct"
-                ]
-        }
-    }
-```
-```javascript
-    HTTP/1.1  400
-    Content-Type: application/json
-    
-    {
-        "message": "Validation errors in your request", /* skip or optional error message */
-        "errors": {
-            "email": [
-              {
-                "message": "Oops! The email is invalid",
-                "code": 35
-              }
-            ],
-            "phoneNumber": [
-              {
-                "message": "Oops! The phone number format is not correct",
-                "code": 36
-              }
-            ]
+            "email": "Oops! The email is invalid",
+            "phoneNumber": "Oops! The phone number format is not correct"
         }
     }
 ```
